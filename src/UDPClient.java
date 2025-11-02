@@ -9,13 +9,13 @@ public class UDPClient {
         DatagramSocket clientSocket = null;
         
         try {
-            // Create client socket
+            // Creación del socket del cliente
             clientSocket = new DatagramSocket();
             
-            // Server address
+            // Dirección del servidor
             InetAddress serverAddress = InetAddress.getByName(SERVER_HOST);
             
-            // Send request to server (just a simple trigger message)
+            // Envío de la solicitud al servidor (un mensaje simple de trigger)
             String request = "SEND_DATA";
             byte[] sendData = request.getBytes();
             
@@ -23,17 +23,17 @@ public class UDPClient {
                 sendData, sendData.length, serverAddress, SERVER_PORT
             );
             
-            System.out.println("Sending request to server...");
+            System.out.println("Enviando solicitud al servidor...");
             clientSocket.send(sendPacket);
             
-            // Receive response from server
-            byte[] receiveData = new byte[65507]; // Maximum UDP packet size
+            // Recepción de la respuesta del servidor
+            byte[] receiveData = new byte[65507]; // Tamaño máximo del packet UDP
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             
-            System.out.println("Waiting for server response...");
+            System.out.println("Esperando la respesta del servidor...");
             clientSocket.receive(receivePacket);
             
-            // Process received data
+            // Proceso de recepción de datos
             processReceivedData(receivePacket.getData(), receivePacket.getLength());
             
         } catch (IOException e) {
@@ -50,7 +50,7 @@ public class UDPClient {
             ByteArrayInputStream byteStream = new ByteArrayInputStream(data, 0, length);
             DataInputStream dataStream = new DataInputStream(byteStream);
             
-            System.out.println("\n=== DATA RECEIVED FROM SERVER ===");
+            System.out.println("\n=== DATOS RECIBIDOS DEL SERVIDOR ===");
             
             String dataType;
             while (!(dataType = dataStream.readUTF()).equals("END")) {
@@ -126,7 +126,7 @@ public class UDPClient {
                 }
             }
             
-            System.out.println("=== END OF DATA ===");
+            System.out.println("=== FIN DE DATOS ===");
             
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,33 +8,33 @@ public class UDPServer {
     public static void main(String[] args) {
         try {
             serverSocket = new DatagramSocket(PORT);
-            System.out.println("Server started on port " + PORT);
-            System.out.println("Waiting for client connection...");
+            System.out.println("Servidor iniciado en el puerto " + PORT);
+            System.out.println("Esperando la conexión del cliente...");
             
             while (true) {
-                // Buffer to receive incoming data
+                // Buffer para recibir los datos entrantes
                 byte[] receiveData = new byte[1024];
                 
-                // Receive packet from client
+                // Recibir el packet del cliente
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 serverSocket.receive(receivePacket);
                 
-                // Get client info
+                // Obtener la información del cliente
                 InetAddress clientAddress = receivePacket.getAddress();
                 int clientPort = receivePacket.getPort();
                 
-                System.out.println("Client connected from: " + clientAddress + ":" + clientPort);
+                System.out.println("Cliente conectado desde: " + clientAddress + ":" + clientPort);
                 
-                // Prepare all data types to send
+                // Preparar los tipos de datos a enviar
                 byte[] responseData = prepareDataTypes();
                 
-                // Send response to client
+                // Enviar respuesta al cliente
                 DatagramPacket sendPacket = new DatagramPacket(
                     responseData, responseData.length, clientAddress, clientPort
                 );
                 serverSocket.send(sendPacket);
                 
-                System.out.println("Data sent to client successfully!");
+                System.out.println("Datos enviados al cliente satisfactoriamente!");
             }
             
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class UDPServer {
     
     private static byte[] prepareDataTypes() {
         try {
-            // Using ByteArrayOutputStream to combine all data
+            // Usando ByteArrayOutputStream para combinar todos los datos
             ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
             DataOutputStream dataStream = new DataOutputStream(byteStream);
             
@@ -98,13 +98,13 @@ public class UDPServer {
             
             // 11. String array
             dataStream.writeUTF("ARRAY_STRING");
-            String[] stringArray = {"Java", "UDP", "Network"};
+            String[] stringArray = {"Java", "UDP", "Red"};
             dataStream.writeInt(stringArray.length);
             for (String str : stringArray) {
                 dataStream.writeUTF(str);
             }
             
-            // End marker
+            // Marcador de final
             dataStream.writeUTF("END");
             
             dataStream.flush();
