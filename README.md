@@ -125,21 +125,3 @@ Este proyecto permitió comprender el funcionamiento del protocolo UDP y sus pri
 Se evidenció que es un protocolo rápido y eficiente, aunque no garantiza la entrega ni el orden de los mensajes.  
 
 Asimismo, se reforzó el uso de flujos binarios en Java para la transmisión de distintos tipos de datos, demostrando cómo se pueden implementar sistemas de comunicación eficaces en entornos distribuidos.
-
----
-
-## Datos del Equipo
-
-**Equipo 3**
-
-- García Salgado Ángel Gabriel  
-- García Zavala Sebastián  
-- Garrido Cázares Ashley Elizabeth  
-- González Calzada Maximiliano  
-- Espinosa Esquivias Mauricio Genaro  
-
-**Profesor:** Hernández Cerón Ricardo  
-**Unidad de Aprendizaje:** Redes y Conectividad  
-**Secuencia:** 5NM52  
-**Institución:** Instituto Politécnico Nacional – UPIICSA  
-**Práctica:** Comunicación Cliente / Servidor con UDP – Noviembre 2025
